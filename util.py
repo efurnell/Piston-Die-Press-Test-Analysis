@@ -1,6 +1,5 @@
 import argparse
 import pandas as pd
-from functions import convert_file_to_list
 import numpy as np
 
 
@@ -42,6 +41,37 @@ def get_sample_info(f):
         blank_test = blank_test
     initial_depth, final_depth = get_bed_depth_height(df)
     return files, masses, blank_test, initial_depth, final_depth
+
+
+
+'''
+    Function name:      convert_file_to_list
+    Input parameters:   data (text file)
+    Return parameters:  time, axialdisp, axialforce (list)
+    Description:        This function converts the output piston die press test machine text file to usable python lists.
+    Warnings:           1.  Assumes data begins on line 9 of the text file (this number should be change based on indiviual piston die press test
+                            output)
+                        2.  Requires that the data list within the text file is continous (no gaps or line breaks)
+                        3.  Requires that there is only three data lists (time, displacement, and force). If there are additional data lists in the
+                            file then this function should be adjusted to reflect that
+    Required library:   none
+'''
+def convert_file_to_list(data):
+    time, axialdisp, axialforce = [], [], []
+    i = 8
+    while i < len(data):
+        m = 0
+        x = data[i].split('\t')
+        while m < 3:
+            if m == 0:
+                time.append(float(x[m]))
+            elif m == 1:
+                axialforce.append(float(x[m]))
+            elif m == 2:
+                axialdisp.append(float(x[m]))
+            m += 1
+        i += 1
+    return time, axialdisp, axialforce
 
 
 
