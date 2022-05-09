@@ -20,9 +20,14 @@ The piston die press test machine produces a .txt or .dat file of a specific for
 	3. Displacement in millimeters - displacement of the piston from position zero
 To prepare the .txt/.dat files: ensure that the data of interest starts on line 9, and that there are no line breaks in or after the data
 
-The excel file should be save in the same folder as the 4 python code files and should contain the piston press test file names (inluding extensions), sample mass (in grams), the initial and final bed heights, and the name a blank sample test file. The file should look as below:
+The excel file should be saved in the same folder as the 4 python code files and should contain the piston press test file names (inluding extensions), sample mass (in grams), the initial and final bed heights, and the name a blank sample test file. The file should look as below:
 ![excelsnip_readme](https://user-images.githubusercontent.com/103532979/167482221-80a68be9-ba7b-4fcc-b90a-e85718d2cb1b.png)
 
 *Note:* 1. The sample name must have the file extenstion (.dat or .txt are acceptable)
 	2. The calculation for the compaction ratio is based on the difference between the initial and final sample height and will depend heighly on the individual 		setup. The code should be adjusted for different setup scenarios.
 	
+## Python Files
+	1. main.py 		Primary file which is to be run.
+	2. blanktest.py		Contains the calculations relating to the blank sample tests
+	3. ulti.py		Contains functions relating to reading and writing excel and text files
+	4. functions.py		Contains functions relating to the relevant calculations on the samples
